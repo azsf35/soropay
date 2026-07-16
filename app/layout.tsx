@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Sora, Manrope } from "next/font/google";
 import "./globals.css";
 import { NetworkProvider } from "@/components/network-provider";
-import { WalletProvider } from "@/components/wallet-provider";
+import { LazyWalletProvider } from "@/components/wallet-provider-lazy";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body suppressHydrationWarning>
         <div className="grain-overlay" />
         <NetworkProvider>
-          <WalletProvider>{children}</WalletProvider>
+          <LazyWalletProvider>{children}</LazyWalletProvider>
         </NetworkProvider>
       </body>
     </html>

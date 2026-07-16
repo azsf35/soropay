@@ -2,9 +2,14 @@
 // Runtime-switchable network config. Unlike a build-time env var, this lets
 // the user flip between Testnet and Mainnet live in the app (see
 // components/network-provider.tsx for the UI + confirmation gate).
+//
+// NOTE: Networks is imported from the /types subpath (not the package root)
+// so this plain-data module never pulls in the wallet-kit's Preact-based
+// modal UI code — that UI is only needed by lib/stellar/wallet-kit.ts, which
+// is loaded lazily client-side only (see components/wallet-provider.tsx).
 // ---------------------------------------------------------------------------
 
-import { Networks } from "@creit.tech/stellar-wallets-kit";
+import { Networks } from "@creit.tech/stellar-wallets-kit/types";
 
 export type NetworkId = "testnet" | "mainnet";
 
